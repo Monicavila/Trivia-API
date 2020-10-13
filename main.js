@@ -10,10 +10,6 @@ function category (categorias){
     const categorys = document.getElementById('category-type')
     const categorySelect = document.getElementById('category-type').value;
     categorias.forEach(categoria => {
-        if (categorySelect == categoria.name){
-                        let idCategory = categoria.id
-                        console.log('categetCategory()gory id: ' + idCategory)
-                    }
         const categoryType = `<option value="${categoria.id}">${categoria.name}</option>`
         categorys.innerHTML += categoryType
     })
@@ -24,7 +20,10 @@ function category (categorias){
 function getQuestions() {
     const questionsQuantity = document.getElementById('questions-number').value
     const categorySelect = document.getElementById('category-type').value
-    fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${categorySelect}`)
+    const dificultad = document.getElementById('dificultad').value
+    const Tipo = document.getElementById('Tipo').value
+    console.log('categoria: ' + categorySelect + ' dificultad: ' + dificultad + ' Tipo: ' + Tipo)
+    fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${categorySelect}&difficulty=${dificultad}&type=${Tipo}`)
         .then(response => response.json())
         .then(data => printCards(data.results))
 }

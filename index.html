@@ -24,16 +24,16 @@
                 <select onchange="getQuestions()" class="form-control" id="category-type"></select>
                     <!-- Dificultad -->
                 <label for="category-type">Dificultad</label>
-                <select class="form-control" id="dificultad">
-                    <option value="Facil">Facil</option>
-                    <option value="Normal">Normal</option>
-                    <option value="Dificil">Dificil</option>
+                <select onchange="getQuestions()" class="form-control" id="dificultad">
+                    <option value="easy">Facil</option>
+                    <option value="medium">Normal</option>
+                    <option value="hard">Dificil</option>
                 </select>
                     <!-- Tipo -->
                 <label for="category-type">Tipo</label>
-                <select class="form-control" id="Tipo">
-                    <option value="Opcion multiple">Opcion multiple</option>
-                    <option value="Verdadero o falso">Verdadero o falso</option>                    
+                <select onchange="getQuestions()" class="form-control" id="Tipo">
+                    <option value="multiple">Opcion multiple</option>
+                    <option value="boolean">Verdadero o falso</option>                    
                 </select>
               </div>
         </div>
