@@ -1,4 +1,3 @@
-
 function getCategory() { 
     fetch(`https://opentdb.com/api_category.php`)
         .then(response => response.json())
@@ -6,24 +5,22 @@ function getCategory() {
             category(data.trivia_categories)
         })
 }
-function category (categorias){
-    const categorys = document.getElementById('category-type')
-    const categorySelect = document.getElementById('category-type').value;
-    categorias.forEach(categoria => {
-        const categoryType = `<option value="${categoria.id}">${categoria.name}</option>`
-        categorys.innerHTML += categoryType
+function category (categories){
+    const categoriesH = document.getElementById('category')
+    categories.forEach(category => {
+        const categoryType = `<option value="${category.id}">${category.name}</option>`
+        categoriesH.innerHTML += categoryType
     })
 }
-
 
 /////
 function getQuestions() {
     const questionsQuantity = document.getElementById('questions-number').value
-    const categorySelect = document.getElementById('category-type').value
-    const dificultad = document.getElementById('dificultad').value
-    const Tipo = document.getElementById('Tipo').value
-    console.log('categoria: ' + categorySelect + ' dificultad: ' + dificultad + ' Tipo: ' + Tipo)
-    fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${categorySelect}&difficulty=${dificultad}&type=${Tipo}`)
+    const categorySelect = document.getElementById('category').value
+    const difficulty = document.getElementById('difficulty').value
+    const type = document.getElementById('type').value
+    console.log('category: ' + categorySelect + ' difficulty: ' + difficulty + ' type: ' + type)
+    fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${categorySelect}&difficulty=${difficulty}&type=${type}`)
         .then(response => response.json())
         .then(data => printCards(data.results))
 }
@@ -31,16 +28,16 @@ function getQuestions() {
 // console.log(datos);
 function printCards(questions) {
     const container = document.getElementById('container-cards')
-    container.innerHTML = '';
+    container.innerHTML = ''
     questions.forEach(question => {
         const card = returnCardHTML(question)
-        container.innerHTML += card;
+        container.innerHTML += card
     });
-    // poner las preguntas en mi página web
+    // Display questions on web page
 }
 
 function returnCardHTML(q) {
-    const card = `<div class="car">
+    const card = `<div class="card">
                     <div class="card-body">
                     <h5 class="card-title">${q.category}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${q.question}</h6>
