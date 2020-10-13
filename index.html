@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivia APP</title>
+    <title>Trivia API</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -11,33 +11,33 @@
     <div class="container mt-5">
         <div>
             <div class="form-group">
-                <!-- Cantidad de preguntas -->
-                <label for="questions-number">Eige cuántas preguntas quieres</label>
+                <!-- Number of Questions -->
+                <label for="questions-number">How many questions you want?</label>
                 <select onchange="getQuestions()" class="form-control" id="questions-number">
                   <option value="5">5</option>
                   <option value="10">10</option>
                   <option value="15">15</option>
                   <option value="20">20</option>
                 </select>
-                    <!-- Categorias -->
-                <label for="category-type">Eige la categoria</label>
-                <select onchange="getQuestions()" class="form-control" id="category-type"></select>
-                    <!-- Dificultad -->
-                <label for="category-type">Dificultad</label>
-                <select onchange="getQuestions()" class="form-control" id="dificultad">
-                    <option value="easy">Facil</option>
-                    <option value="medium">Normal</option>
-                    <option value="hard">Dificil</option>
+                    <!-- Category -->
+                <label for="category">Select Category:</label>
+                <select onchange="getQuestions()" class="form-control" id="category"></select>
+                    <!-- Difficulty -->
+                <label for="category">Select Difficulty: </label>
+                <select onchange="getQuestions()" class="form-control" id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
                 </select>
-                    <!-- Tipo -->
-                <label for="category-type">Tipo</label>
-                <select onchange="getQuestions()" class="form-control" id="Tipo">
-                    <option value="multiple">Opcion multiple</option>
-                    <option value="boolean">Verdadero o falso</option>                    
+                    <!-- Type -->
+                <label for="category">Select Type:</label>
+                <select onchange="getQuestions()" class="form-control" id="type">
+                    <option value="multiple">Multiple Choice</option>
+                    <option value="boolean">True/false</option>                    
                 </select>
               </div>
         </div>
-        <!-- Aquí van las tarjetas -->
+        <!-- Cards display -->
         <div id="container-cards">
 
         </div>
