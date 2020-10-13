@@ -2,7 +2,9 @@
 function getCategory() { 
     fetch(`https://opentdb.com/api_category.php`)
         .then(response => response.json())
-        .then(data =>  category(data.trivia_categories))
+        .then(data =>  {
+            category(data.trivia_categories)
+        })
 }
 function category (categorias){
     const categorys = document.getElementById('category-type')
@@ -10,28 +12,19 @@ function category (categorias){
     categorias.forEach(categoria => {
         if (categorySelect == categoria.name){
                         let idCategory = categoria.id
-                        console.log('category id: ' + idCategory)
+                        console.log('categetCategory()gory id: ' + idCategory)
                     }
-        const categoryType = `<option value="${categoria.name}">${categoria.name}</option>`
+        const categoryType = `<option value="${categoria.id}">${categoria.name}</option>`
         categorys.innerHTML += categoryType
     })
 }
-
-// function idCategory (categorias){
-//     const categorySelect = document.getElementById('category-type').value;
-//     categorias.forEach(categoria => {
-//         if (categorySelect == categoria.name){
-//             let idCategory = categoria.id
-//             console.log('category id: ' + idCategory)
-//         }
-//     })
-// }
 
 
 /////
 function getQuestions() {
     const questionsQuantity = document.getElementById('questions-number').value
-    fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=10`)
+    const categorySelect = document.getElementById('category-type').value
+    fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${categorySelect}`)
         .then(response => response.json())
         .then(data => printCards(data.results))
 }
