@@ -32,44 +32,51 @@ function getQuestions() {
 function printCards(questions) {
     const container = document.getElementById('container-cards')
     container.innerHTML = '';
-    questions.forEach(question => {
-        const card = returnCardHTML(question)
+    questions.forEach((question, indexCard)=> {
+        const card = returnCardHTML(question, indexCard)
         container.innerHTML += card;
     });
     // poner las preguntas en mi página web
+    container.innerHTML += `<button type="button" onclick="validate()" class="btn btn-success m-5">Validar</button>`
 }
 
-function returnCardHTML(q) {
+function returnCardHTML(q, indexCard) {
     const card = `<div class="car">
                     <div class="card-body">
                     <h5 class="card-title">${q.category}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${q.question}</h6>
-                        ${returnAnswersHTML(q.correct_answer, q.incorrect_answers)}           
+
+                        ${returnAnswersHTML(q.correct_answer, q.incorrect_answers, indexCard)}           
                     </div>
                 </div>`
     return card;
 }
-function returnAnswersHTML(correct, incorrects) {
-    // const correctHTML = `<div class="form-check">
-    //                         <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-    //                         <label class="form-check-label" for="exampleRadios1">
-    //                         ${correct}
-    //                         </label>
-    //                     </div>`;
-
+function returnAnswersHTML(correct, incorrects, indexCard) {
     incorrects.push(correct)
     let incorrectHTML = '';
     incorrects.forEach((incorrect, index) => {
         incorrectHTML += `<div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios${index}" value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios${index}">
+                            <input class="form-check-input" type="radio" name="radios-${indexCard}" id="radio${indexCard}-${index}">
+                            <label class="form-check-label" for="radio${indexCard}-${index}">
                             ${incorrect}
                             </label>
                         </div>`;
     })
-
-
     return incorrectHTML;
+}
+
+function validate() {
+    const numCards = document.getElementById('questions-number').value
+    for(let i = 0; i < numCards; i++){
+        const opciones = document.getElementsByName(`radios-${i}`)
+        for(let option of opciones){
+            if(option.checked){
+                console.log('true')
+            }else{
+                console.log('false')
+            }
+        }
+    }
 }
 
 window.category = category
