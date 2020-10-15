@@ -1,4 +1,5 @@
 
+let correctsAnwers = [];
 function getCategory() { 
     fetch(`https://opentdb.com/api_category.php`)
         .then(response => response.json())
@@ -37,8 +38,9 @@ function printCards(questions) {
         container.innerHTML += card;
     });
     // button
-    const hola = correctAnswer(questions)
-    container.innerHTML += `<button type="button" value='${hola}' onclick="validate(correctAnswer)" id='btnWorked' class="btn btn-success m-5">Validar</button>`
+    // const hola = correctAnswer(questions)
+    correctsAnwers = correctAnswer(questions);
+    container.innerHTML += `<button type="button" onclick="validate(correctAnswer)" id='btnWorked' class="btn btn-success m-5">Validar</button>`
 }
 
 function returnCardHTML(q, indexCard) {
@@ -75,17 +77,25 @@ function correctAnswer(results) {
 }
 
 function validate() {
-    const btnVAl = document.getElementById('btnWorked').value
-    console.log( btnVAl)
-    const res = btnVAl.split(',')
-    console.log( res)
-    const numCards = document.getElementById('questions-number').value
+    // const btnVAl = document.getElementById('btnWorked').value
+    // console.log( btnVAl)
+    // const numCards = document.getElementById('questions-number').value
+
+    // const elements = document.getElementsByClassName('.col')
+    // Array.from(elements)
+    // document.querySelectorAll('name*=radios-')
+    // document.querySelector('.col')
+
+    /*CA =[true, false]
+    [radio1, radio2]
+    radio1.value == true*/
+
     let numGood = 0
-    for(let i = 0; i < numCards; i++){
+    for(let i = 0; i < correctsAnwers.length; i++){
         const opciones = document.getElementsByName(`radios-${i}`)
         opciones.forEach(opcion=> {
             if (opcion.checked){
-                 if (opcion.value == res[i]){
+                 if (opcion.value == correctsAnwers[i]){
                      console.log('asertaste')
                      numGood ++
                  }else{
