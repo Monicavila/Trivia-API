@@ -22,10 +22,10 @@ function getQuestions() {
     const categorySelect = document.getElementById('category-type').value
     const dificultad = document.getElementById('dificultad').value
     const Tipo = document.getElementById('Tipo').value
-    console.log('categoria: ' + categorySelect + ' dificultad: ' + dificultad + ' Tipo: ' + Tipo)
     fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${categorySelect}&difficulty=${dificultad}&type=${Tipo}`)
         .then(response => response.json())
-        .then(data => printCards(data.results))
+        .then(data =>  {printCards(data.results)
+                        })
 }
 
 // console.log(datos);
@@ -36,8 +36,9 @@ function printCards(questions) {
         const card = returnCardHTML(question, indexCard)
         container.innerHTML += card;
     });
-    // poner las preguntas en mi página web
-    container.innerHTML += `<button type="button" onclick="validate()" class="btn btn-success m-5">Validar</button>`
+    // button
+    const hola = correctAnswer(questions)
+    container.innerHTML += `<button type="button" value='${hola}' onclick="validate(correctAnswer)" id='btnWorked' class="btn btn-success m-5">Validar</button>`
 }
 
 function returnCardHTML(q, indexCard) {
@@ -56,7 +57,7 @@ function returnAnswersHTML(correct, incorrects, indexCard) {
     let incorrectHTML = '';
     incorrects.forEach((incorrect, index) => {
         incorrectHTML += `<div class="form-check">
-                            <input class="form-check-input" type="radio" name="radios-${indexCard}" id="radio${indexCard}-${index}">
+                            <input class="form-check-input" type="radio" name="radios-${indexCard}" id="radio${indexCard}-${index}" value='${incorrect}'>
                             <label class="form-check-label" for="radio${indexCard}-${index}">
                             ${incorrect}
                             </label>
@@ -65,19 +66,41 @@ function returnAnswersHTML(correct, incorrects, indexCard) {
     return incorrectHTML;
 }
 
+function correctAnswer(results) {
+    let correctAns = []
+    results.forEach( result => correctAns.push(result.correct_answer))
+    console.log(correctAns)
+    return correctAns
+    /////////    
+}
+
 function validate() {
+    const btnVAl = document.getElementById('btnWorked').value
+    console.log( btnVAl)
+    const res = btnVAl.split(',')
+    console.log( res)
     const numCards = document.getElementById('questions-number').value
+    let numGood = 0
     for(let i = 0; i < numCards; i++){
         const opciones = document.getElementsByName(`radios-${i}`)
-        for(let option of opciones){
-            if(option.checked){
-                console.log('true')
-            }else{
-                console.log('false')
+        opciones.forEach(opcion=> {
+            if (opcion.checked){
+                 if (opcion.value == res[i]){
+                     console.log('asertaste')
+                     numGood ++
+                 }else{
+                    console.log('fallaste')
+                 }
             }
-        }
+        })
+        
     }
+    alert('tienes bien: ' + numGood + ' respuestas')
 }
+
+
+
+
 
 window.category = category
 getCategory()
