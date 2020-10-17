@@ -1,47 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivia APP</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
-    
+
     <div class="container mt-5">
         <div>
             <div class="form-group">
                 <!-- Cantidad de preguntas -->
                 <label for="questions-number">Eige cuántas preguntas quieres</label>
                 <select onchange="getQuestions()" class="form-control" id="questions-number">
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
+                    <option value="empty">---</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
                 </select>
-                    <!-- Categorias -->
+                <!-- Categorias -->
                 <label for="category-type">Eige la categoria</label>
                 <select onchange="getQuestions()" class="form-control" id="category-type"></select>
-                    <!-- Dificultad -->
-                <label for="dificultad">Dificultad</label>
-                <select onchange="getQuestions()" class="form-control" id="dificultad">
+                <!-- Dificultad -->
+                <label for="difficulty">Dificultad</label>
+                <select onchange="getQuestions()" class="form-control" id="difficulty">
                     <option value="easy">Facil</option>
                     <option value="medium">Normal</option>
                     <option value="hard">Dificil</option>
                 </select>
-                    <!-- Tipo -->
-                <label for="Tipo">Tipo</label>
-                <select onchange="getQuestions()" class="form-control" id="Tipo">
+                <!-- Tipo -->
+                <label for="type">Tipo</label>
+                <select onchange="getQuestions()" class="form-control" id="type">
                     <option value="multiple">Opcion multiple</option>
-                    <option value="boolean">Verdadero o falso</option>                    
+                    <option value="boolean">Verdadero o falso</option>
                 </select>
-              </div>
+            </div>
         </div>
         <!-- Aquí van las tarjetas -->
-        <div id="container-cards">
-
-        </div>
+        <form onsubmit="validate(correctAnswers)">
+            <div id="container-cards"></div>
+            <button type="submit"  id="btnWorked" class="btn btn-success m-5" style="display: none;">Validar</button>
+            <div id="alert">
+            </div>
+        </form>
     </div>
     <script src="./main.js"></script>
 </body>
+
 </html>
