@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia APP</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div class="container mt-5">
+        <div>
+            <div class="form-group">
+                <!-- Cantidad de preguntas -->
+                <label for="questions-number">Eige cuántas preguntas quieres</label>
+                <select onchange="getQuestions()" class="form-control" id="questions-number">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                </select>
+                    <!-- Categorias -->
+                <label for="category-type">Eige la categoria</label>
+                <select onchange="getQuestions()" class="form-control" id="category-type"></select>
+                    <!-- Dificultad -->
+                <label for="dificultad">Dificultad</label>
+                <select onchange="getQuestions()" class="form-control" id="dificultad">
+                    <option value="easy">Facil</option>
+                    <option value="medium">Normal</option>
+                    <option value="hard">Dificil</option>
+                </select>
+                    <!-- Tipo -->
+                <label for="Tipo">Tipo</label>
+                <select onchange="getQuestions()" class="form-control" id="Tipo">
+                    <option value="multiple">Opcion multiple</option>
+                    <option value="boolean">Verdadero o falso</option>                    
+                </select>
+              </div>
+        </div>
+        <!-- Aquí van las tarjetas -->
+        <div id="container-cards">
+
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
