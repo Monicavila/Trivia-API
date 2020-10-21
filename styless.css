@@ -8,14 +8,11 @@
 .container {
     width: 100%;
     padding: 50px;
-    max-height: 1500px;
-    display: flex;
+    height: 100vh;
     align-items: center;
     justify-content: space-evenly;
     margin: auto;
-    background: #000000;  /* fallback for old browsers */
-    /* background: -webkit-linear-gradient(to right, #434343, #000000);  Chrome 10-25, Safari 5.1-6 */
-    /* background: linear-gradient(to right, #434343, #000000); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #000000; 
 
 }
 
@@ -25,15 +22,16 @@ img {
     object-fit: cover;
     width: 50%;
 }
+
 .imagen {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
 }
 
 .text {
-    width: 50%;
+    width: 100%;
     color: whitesmoke;
     text-align: center;
 }
@@ -52,53 +50,45 @@ a {
 }
 
 h1 {
-    font-size: 80px;
+    font-size: 60px;
     font-family: 'Ranchers', cursive;
+    text-align: center;
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 25px;
+    text-align: center;
 }
 
-@media screen and (max-width: 2170px) {
-    img{
-        height: 450px;
-        width: auto;
-    }
-}
 
-@media screen and (max-width: 700px) {
-    img{
-        height: 250px;
+@media screen and (min-width: 700px) {
+    .container {
+        display: flex; 
+        flex-wrap: wrap;
+    } 
+
+    .col-md-6 {
+        width: 50%;
     }
+
     h1 {
         font-size: 70px;
     }
     h2 {
-        font-size: 25px;
+        font-size: 30px;
     }
 }
 
-@media screen and (max-width: 450px) {
-    .container {
-        display: inline-block;
-        flex-wrap: wrap;
-    }
 
-    .imagen{
-        width: 100%;
+@media screen and (min-width: 1200px) {
+    img{
+        height: 320px;
+        width: auto;
     }
-
-    .text{
-        width: 100%;
-    }
-
     h1 {
-        font-size: 60px;
-        text-align: center;
+        font-size: 85px;
     }
     h2 {
-        font-size: 25px;
-        text-align: center;
+        font-size: 40px;
     }
 }
