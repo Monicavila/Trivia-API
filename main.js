@@ -128,7 +128,7 @@ function validate() {
         alert('¡GOOD JOB! You have right' + ' ' + numGood + ' ' + 'answers.');
     }
     if (numGood < 5) {
-        alert('¡TRY AGAIN! You have right' + ' ' + numGood + ' ' + 'of 5 answers.');
+        alert('¡TRY AGAIN! You have right' + ' ' + numGood + ' ' + 'answers.');
     }
 }
 
