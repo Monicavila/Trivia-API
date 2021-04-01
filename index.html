@@ -1,26 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Grandstander:wght@400;800;900&family=Montserrat:ital,wght@0,400;0,500;0,700;1,100;1,200&family=Ranchers&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styless.css">
-</head>
-<body>
-  <div class="container">
-    <div class="col-md-6">
-      <div class="text">
-        <h1>TRIVIA</h1>
-        <h2>Are you ready?</h2>
-        <a href="./trivia.html">Start</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>TRIVIA</title>
+  </head>
+  <body>
+    <div
+      class="container-fluid bg-black expan d-flex align-items-sm-center justify-content-center"
+    >
+      <div class="row">
+        <div class="col-12 col-md-6 d-flex justify-content-center p-5">
+          <div id="start" class="d-flex flex-column justify-content-between">
+            <h1 class="text-white text-center">TRIVIA</h1>
+            <h2 class="text-white text-center">Are you ready?</h2>
+            <form id="formName">
+              <div class="mb-3 d-flex justify-content-center">
+                <input
+                  type="text"
+                  class="form-control text-center inputName-w"
+                  id="inputName"
+                  placeholder="Name"
+                  required
+                />
+              </div>
+              <div class="d-flex justify-content-center">
+                <button
+                  type="submit"
+                  id="btnStart"
+                  class="btn btn-outline-light btnStart-w"
+                >
+                  Start
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div
+          class="col-12 col-md-6 d-flex justify-content-center align-items-center"
+        >
+          <div id="imgIndex-container">
+            <img id="imgIndex" src="./Marcianito.png" alt="Logo  de marciano" />
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="imagen">
-        <img src="https://cdn.icon-icons.com/icons2/1388/PNG/512/brainslug_96005.png" alt="img.png">
-      </div>
-    </div>
-  </div>
-</body>
+    <script src="/js/events.js"></script>
+  </body>
 </html>
