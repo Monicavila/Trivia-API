@@ -127,30 +127,30 @@ function msgModal(numGood, correctsAnswers) {
   const modal = document.getElementById("scoreModal");
   if (promedio >= 80) {
     modal.innerHTML = `<div>
-    <span class="bold"> Felicidades</span>
-    tuviste <span  class="text-success">${numGood} aciertos </span>
-    de ${correctsAnswers} preguntas
+    <span class="bold"> Congratulations</span>
+    you got <span  class="text-success">${numGood} hits </span>
+    of ${correctsAnswers} questions
   </div>
   <div>
-    ¡Buen Trabajo!  Promedio de <span class="text-success">${promedio}%</span>
+  Good job! average of <span class="text-success">${promedio}%</span>
   </div>`;
     console.log("Good", promedio);
   } else if (promedio >= 50) {
     modal.innerHTML = `<div>
-    <span class="bold"> No esta mal, pero puedes hacerlo mejor,</span>
-    tuviste <span class="text-primary">${numGood} aciertos </span>
-    de ${correctsAnswers} preguntas
+    <span class="bold"> Not bad, but you can do better,</span>
+    you got <span class="text-primary">${numGood} hits </span>
+    of ${correctsAnswers} questions
   </div>
   <div>
-    ¡Podemos mejorarlo!  Promedio de <span <span class="text-primary">${promedio}%</span>
+  We can improve it! average of <span <span class="text-primary">${promedio}%</span>
   </div>`;
   } else {
     modal.innerHTML = `<div>
-    <span class="bold"> ¡Lo sentimos!</span> debemos mejorar esto, <span class="text-danger">${numGood} aciertos </span>
-    de ${correctsAnswers} preguntas
+    <span class="bold"> We are sorry!</span> We must improve this, <span class="text-danger">${numGood} hits </span>
+    of ${correctsAnswers} questions
   </div>
   <div>
-    ¡Vaya! creo que hay que estudiar.  Promedio de <span class="text-danger">${promedio}%</span>
+  Wow! I think you have to study.  average of <span class="text-danger">${promedio}%</span>
   </div>`;
   }
 }
@@ -181,6 +181,7 @@ function ordenarAverage() {
     newTop10[`item${i + 1}`] = top10[key];
     delete top10[key];
   }
+  console.log("ordenar:", newTop10);
   localStorage.setItem("top10", JSON.stringify(newTop10));
   return newTop10;
 }
@@ -200,10 +201,16 @@ function validate(evt) {
     });
   }
   msgModal(numGood, correctsAnswers.length);
+  const modal = new bootstrap.Modal(document.getElementById("modalValidate"));
+  modal.show();
   if (checkTop() < 10) {
     const top10 = JSON.parse(localStorage.getItem("top10"));
     top10[`item${[checkTop() + 1]}`] = {
       fecha: moment().format("L"),
+      time: {
+        inicio: sessionStorage.getItem("inicio"),
+        fin: sessionStorage.getItem("fin"),
+      },
       palyer: sessionStorage.getItem("triviaPlayerName"),
       goodAnswers: {
         good: JSON.parse(sessionStorage.getItem("goodAnswers"))[0],
@@ -220,6 +227,10 @@ function validate(evt) {
       if (scorToValidate > scortop10) {
         top10["item10"] = {
           fecha: moment().format("L"),
+          time: {
+            inicio: sessionStorage.getItem("inicio"),
+            fin: sessionStorage.getItem("fin"),
+          },
           palyer: sessionStorage.getItem("triviaPlayerName"),
           goodAnswers: {
             good: JSON.parse(sessionStorage.getItem("goodAnswers"))[0],
@@ -231,7 +242,7 @@ function validate(evt) {
         ordenarAverage();
       } else {
         //validar
-        console.log(validar);
+        console.log("validar");
       }
     }
   }
@@ -240,6 +251,7 @@ function validate(evt) {
 function reload() {
   location.reload();
 }
+
 function score() {
   location = `${location.origin}/html/score.html`;
 }

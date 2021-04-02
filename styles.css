@@ -20,6 +20,9 @@
 section {
   padding: 50px;
 }
+#sectionScore {
+  padding: 20px;
+}
 
 h1 {
   font-family: "Ranchers", cursive;
@@ -27,7 +30,6 @@ h1 {
 .bold {
   font-weight: bold;
 }
-
 
 .bgw {
   background-color: whitesmoke;
@@ -55,6 +57,11 @@ h1 {
 
 .mg-bottom {
   margin-bottom: 30px;
+}
+
+.paddingLR0 {
+  padding-left: 0;
+  padding-right: 0;
 }
 #imgIndex-container {
   width: 60%;
